@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "850959139443",
+    "project_id": "fhir-medication-28ba3",
+    "storage_bucket": "fhir-medication-28ba3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850959139443:android:6695d2a318bfa363baa006",
+        "android_client_info": {
+          "package_name": "com.example.fhir_medication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850959139443-snvjmdrgmpd50cncbiqsgtasmn7opgut.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fhir_medication",
+            "certificate_hash": "0ab61eaef32ae846ac5a9ff7432919c437272d52"
+          }
+        },
+        {
+          "client_id": "850959139443-opoihcehscb08baebjug8d4vqoi45np9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCbhhBri8ZecP78YpJhtQgWLO1ydCQ8h1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850959139443-opoihcehscb08baebjug8d4vqoi45np9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
