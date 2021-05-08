@@ -8,4 +8,5 @@
     <string name="medication">Medication</string>
     <string name="please_grant_location_permission">Please grant location permission!</string>
     <string name="log_out">Log out</string>
+    <string name="statistics">Statistics</string>
 </resources>

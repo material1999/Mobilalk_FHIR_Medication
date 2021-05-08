@@ -5,8 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.transition.Explode;
-import android.transition.Fade;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.Gravity;
@@ -39,6 +37,7 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
         setContentView(R.layout.activity_medication);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
+        assert user != null;
         Log.d(LOG_TAG, "user: " + user.getEmail());
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -48,17 +47,15 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
         textView.setText("Medication");
 
         floatingActionButton = findViewById(R.id.addMedicationButton);
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // TODO: implement medication add
-                textView.setText("Add medication");
-                Log.d(LOG_TAG, "Adding medication");
-            }
+        floatingActionButton.setOnClickListener(v -> {
+            // TODO: implement medication add
+            textView.setText("Add medication");
+            Log.d(LOG_TAG, "Adding medication");
         });
     }
 
 
+    @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
     @Override
     public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
         switch (item.getItemId()) {
@@ -66,6 +63,11 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
                 floatingActionButton.setVisibility(View.VISIBLE);
                 Log.d(LOG_TAG, "Medication");
                 textView.setText("Medication");
+                break;
+            case R.id.statistics:
+                floatingActionButton.setVisibility(View.INVISIBLE);
+                Log.d(LOG_TAG, "Statistics");
+                textView.setText("Statistics");
                 break;
             case R.id.profilePage:
                 Log.d(LOG_TAG, "Profile");
@@ -79,9 +81,5 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
                 break;
         }
         return true;
-    }
-
-    public void addMedication() {
-
     }
 }

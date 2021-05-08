@@ -147,4 +147,45 @@ public class MainActivity extends AppCompatActivity {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.i(LOG_TAG, "onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.i(LOG_TAG, "onStop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i(LOG_TAG, "onDestroy");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("username", userNameET.getText().toString());
+        editor.putString("password", passwordET.getText().toString());
+        editor.apply();
+        Log.i(LOG_TAG, "onPause");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show();
+        Log.i(LOG_TAG, "onResume");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i(LOG_TAG, "onRestart");
+    }
 }

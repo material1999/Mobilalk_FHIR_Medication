@@ -6,6 +6,11 @@
             android:icon="@drawable/ic_baseline_local_hospital_24"
             android:title="@string/medication"/>
         <item
+            android:id="@+id/statistics"
+            android:enabled="true"
+            android:icon="@drawable/ic_baseline_bar_chart_24"
+            android:title="@string/statistics"/>
+        <item
             android:id="@+id/profilePage"
             android:enabled="true"
             android:icon="@drawable/ic_baseline_person_24"
