@@ -3,6 +3,7 @@ package com.example.fhir_medication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,11 +15,13 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getName();
-
-    EditText userNameET;
-    EditText passwordET;
+    private static final String PREF_KEY = MainActivity.class.getPackage().toString();
 
     private FirebaseAuth mAuth;
+    private SharedPreferences sharedPreferences;
+
+    private EditText userNameET;
+    private EditText passwordET;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         passwordET = findViewById(R.id.editTextPassword);
 
         mAuth = FirebaseAuth.getInstance();
+
+        sharedPreferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
+        if (sharedPreferences.contains("username") && sharedPreferences.contains("password")) {
+            userNameET.setText(sharedPreferences.getString("username", ""));
+            passwordET.setText(sharedPreferences.getString("password", ""));
+        }
     }
 
     public void login(View view) {
@@ -43,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
             mAuth.signInWithEmailAndPassword(userName, password).addOnCompleteListener(this, task -> {
                 if(task.isSuccessful()){
                     Log.d(LOG_TAG, "Login succeeded: " + userName + " - " + password);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("username", userName);
+                    editor.putString("password", password);
+                    editor.apply();
                     medicationStart();
                 } else {
                     Log.d(LOG_TAG, "Login failed");
