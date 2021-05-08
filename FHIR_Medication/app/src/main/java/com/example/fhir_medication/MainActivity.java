@@ -1,13 +1,22 @@
 package com.example.fhir_medication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,12 +25,36 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = MainActivity.class.getName();
     private static final String PREF_KEY = MainActivity.class.getPackage().toString();
+    private static final long LOCATION_REFRESH_TIME = 10;
+    private static final float LOCATION_REFRESH_DISTANCE = 10;
+    final private int REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     private FirebaseAuth mAuth;
     private SharedPreferences sharedPreferences;
+    private NotificationHelper notificationHelper;
 
     private EditText userNameET;
     private EditText passwordET;
+    private TextView locationTV;
+
+    private final LocationListener mLocationListener = new LocationListener() {
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onLocationChanged(final Location location) {
+            locationTV.setText("Latitude: " + location.getLatitude() + "\nLongitude: " + location.getLongitude());
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) { }
+
+        @Override
+        public void onProviderEnabled(String provider) { }
+
+        @Override
+        public void onProviderDisabled(String provider) { }
+    };
+    
+    private LocationManager mLocationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +63,23 @@ public class MainActivity extends AppCompatActivity {
 
         userNameET = findViewById(R.id.editTextUserName);
         passwordET = findViewById(R.id.editTextPassword);
+        locationTV = findViewById(R.id.locationText);
 
         mAuth = FirebaseAuth.getInstance();
+
+        notificationHelper = new NotificationHelper(this);
 
         sharedPreferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
         if (sharedPreferences.contains("username") && sharedPreferences.contains("password")) {
             userNameET.setText(sharedPreferences.getString("username", ""));
             passwordET.setText(sharedPreferences.getString("password", ""));
         }
+
+        checkUserPermission();
+
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME,
+                LOCATION_REFRESH_DISTANCE, mLocationListener);
     }
 
     public void login(View view) {
@@ -56,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("username", userName);
                     editor.putString("password", password);
                     editor.apply();
+                    notificationHelper.send("Thank you for visiting the medication database!");
                     medicationStart();
                 } else {
                     Log.d(LOG_TAG, "Login failed");
@@ -69,5 +112,32 @@ public class MainActivity extends AppCompatActivity {
     private void medicationStart() {
         Intent intent = new Intent(this, MedicationActivity.class);
         startActivity(intent);
+    }
+
+    void checkUserPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (ActivityCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        REQUEST_CODE_ASK_PERMISSIONS);
+                return;
+            }
+        }
+        locationTV.setText("granted");
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_CODE_ASK_PERMISSIONS:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    locationTV.setText("granted");
+                } else {
+                    Toast.makeText(this, "Permission denied!", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }
