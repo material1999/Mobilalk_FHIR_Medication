@@ -15,7 +15,7 @@ Az általam választott projekt az FHIR szabvány Medication erőforrása, amely
 Az alábbi funkciók érhetőek el az alkalmazásban:
 
 - az orvosoknak be kell jelentkezniük, vendégként nem lehet belépni a rendszerbe
-- bejelentkezés után lehetőség van gyógyszerek listázására, különböző szűrési feltételek alapján, ezt bármely orvos, ápoló megteheti
+- bejelentkezés után lehetőség van gyógyszerek listázására, különböző szűrési feltételek alapján
 - különböző statisztikák is lekérhetőek a gyógyszerekről (legnagyobb gyógyszergyártók, legerősebb gyógyszerek, leghamarabb lejáró gyógyszerek)
-- amennyiben valamely kutatás új eredményeket hoz, a gyógyszerekről tárolt információk módosíthatóak, azonban ehhez külön jogosultság szükséges
-- ha egy gyógyszer kifejlesztésre kerül, azt az orvosok fel is vehetik a rendszerbe, valamint a régebbi, már nem használatos gyógyszereket törölhetik is (szintén jogosultsághoz kötött)
+- amennyiben valamely kutatás új eredményeket hoz, a gyógyszerekről tárolt információk módosíthatóak
+- ha egy gyógyszer kifejlesztésre kerül, azt az orvosok fel is vehetik a rendszerbe, valamint a régebbi, már nem használatos gyógyszereket törölhetik is
