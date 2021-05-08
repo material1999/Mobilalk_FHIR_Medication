@@ -14,16 +14,17 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.transition.Slide;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("SetTextI18n")
         @Override
         public void onLocationChanged(final Location location) {
-            locationTV.setText("Latitude: " + location.getLatitude() + "\nLongitude: " + location.getLongitude());
+            locationTV.setText("Latitude: " + location.getLatitude() +
+                    "\nLongitude: " + location.getLongitude());
         }
 
         @Override
@@ -57,8 +59,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onProviderDisabled(String provider) { }
     };
-    
-    private LocationManager mLocationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         checkUserPermission();
 
-        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        LocationManager mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, LOCATION_REFRESH_TIME,
                 LOCATION_REFRESH_DISTANCE, mLocationListener);
     }
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     Log.d(LOG_TAG, "Login failed");
                     Toast.makeText(MainActivity.this, "Login failed: " +
-                            task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -129,25 +129,22 @@ public class MainActivity extends AppCompatActivity {
                     Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                         REQUEST_CODE_ASK_PERMISSIONS);
-                return;
             }
         }
-        locationTV.setText("granted");
     }
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_CODE_ASK_PERMISSIONS:
-                if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    locationTV.setText("Waiting for location information...");
-                } else {
-                    Toast.makeText(this, "Permission denied!", Toast.LENGTH_SHORT).show();
-                }
-                break;
-            default:
-                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    public void onRequestPermissionsResult(int requestCode, String @NotNull [] permissions,
+                                           int @NotNull [] grantResults) {
+        if (requestCode == REQUEST_CODE_ASK_PERMISSIONS) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                locationTV.setText("Waiting for location information...");
+            } else {
+                Toast.makeText(this, "Permission denied!", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }
