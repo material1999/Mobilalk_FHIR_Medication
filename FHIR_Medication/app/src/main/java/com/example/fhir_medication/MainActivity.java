@@ -126,12 +126,13 @@ public class MainActivity extends AppCompatActivity {
         locationTV.setText("granted");
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
             case REQUEST_CODE_ASK_PERMISSIONS:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    locationTV.setText("granted");
+                    locationTV.setText("Waiting for location information...");
                 } else {
                     Toast.makeText(this, "Permission denied!", Toast.LENGTH_SHORT).show();
                 }
