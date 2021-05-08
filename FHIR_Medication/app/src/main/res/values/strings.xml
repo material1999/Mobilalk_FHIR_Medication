@@ -7,4 +7,5 @@
     <string name="profile">Profile</string>
     <string name="medication">Medication</string>
     <string name="please_grant_location_permission">Please grant location permission!</string>
+    <string name="log_out">Log out</string>
 </resources>
