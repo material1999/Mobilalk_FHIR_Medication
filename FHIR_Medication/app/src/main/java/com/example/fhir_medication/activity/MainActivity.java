@@ -1,4 +1,4 @@
-package com.example.fhir_medication;
+package com.example.fhir_medication.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -20,6 +20,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fhir_medication.helper.NotificationHelper;
+import com.example.fhir_medication.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;

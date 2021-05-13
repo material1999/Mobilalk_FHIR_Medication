@@ -1,4 +1,4 @@
-package com.example.fhir_medication;
+package com.example.fhir_medication.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,10 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.Window;
 
+import com.example.fhir_medication.fragment.MedicationFragment;
+import com.example.fhir_medication.fragment.ProfileFragment;
+import com.example.fhir_medication.R;
+import com.example.fhir_medication.fragment.StatisticsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

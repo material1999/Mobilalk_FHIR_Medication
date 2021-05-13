@@ -1,4 +1,4 @@
-package com.example.fhir_medication;
+package com.example.fhir_medication.helper;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -9,6 +9,9 @@ import android.graphics.Color;
 import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
+
+import com.example.fhir_medication.R;
+import com.example.fhir_medication.activity.MedicationActivity;
 
 public class NotificationHelper {
     private static final String CHANNEL_ID = "shop_notification_channel";
