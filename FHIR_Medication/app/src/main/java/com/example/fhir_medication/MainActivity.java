@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(this, "Welcome back!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Welcome to the login page!", Toast.LENGTH_SHORT).show();
         Log.i(LOG_TAG, "onResume");
     }
 

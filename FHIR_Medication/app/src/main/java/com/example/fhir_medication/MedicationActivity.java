@@ -2,6 +2,7 @@ package com.example.fhir_medication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -9,12 +10,9 @@ import android.transition.Slide;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.Window;
-import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -24,8 +22,6 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
     private FirebaseUser user;
 
     private BottomNavigationView bottomNavigationView;
-    private TextView textView;
-    private FloatingActionButton floatingActionButton;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -34,6 +30,12 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
         getWindow().setEnterTransition(new Slide(Gravity.BOTTOM));
 
         super.onCreate(savedInstanceState);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.fragment_container_view, MedicationFragment.class, null)
+                    .commit();
+        }
         setContentView(R.layout.activity_medication);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -42,43 +44,37 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-
-        textView = findViewById(R.id.textView);
-        textView.setText("Medication");
-
-        floatingActionButton = findViewById(R.id.addMedicationButton);
-        floatingActionButton.setOnClickListener(v -> {
-            // TODO: implement medication add
-            textView.setText("Add medication");
-            Log.d(LOG_TAG, "Adding medication");
-        });
     }
 
 
     @SuppressLint({"SetTextI18n", "NonConstantResourceId"})
     @Override
     public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
+        Fragment selectedFragment = null;
         switch (item.getItemId()) {
             case R.id.medicationPage:
-                floatingActionButton.setVisibility(View.VISIBLE);
+                selectedFragment = new MedicationFragment();
                 Log.d(LOG_TAG, "Medication");
-                textView.setText("Medication");
                 break;
             case R.id.statistics:
-                floatingActionButton.setVisibility(View.INVISIBLE);
+                selectedFragment = new StatisticsFragment();
                 Log.d(LOG_TAG, "Statistics");
-                textView.setText("Statistics");
                 break;
             case R.id.profilePage:
+                selectedFragment = new ProfileFragment();
                 Log.d(LOG_TAG, "Profile");
-                textView.setText("Profile");
-                floatingActionButton.setVisibility(View.INVISIBLE);
                 break;
             case R.id.logOut:
                 Log.d(LOG_TAG, "User logged out successfully");
                 FirebaseAuth.getInstance().signOut();
                 finish();
                 break;
+        }
+        if (selectedFragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .replace(R.id.fragment_container_view, selectedFragment, null)
+                    .commit();
         }
         return true;
     }
