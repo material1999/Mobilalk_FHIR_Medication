@@ -2,12 +2,15 @@ package com.example.fhir_medication.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.transition.TransitionInflater;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.fhir_medication.R;
 
@@ -17,6 +20,9 @@ import com.example.fhir_medication.R;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+    private TextView showEmail;
+    private Button changePassword;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,5 +71,13 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        showEmail = view.findViewById(R.id.showEmail);
+        showEmail.setText(requireArguments().getString("email"));
+
+        changePassword = view.findViewById(R.id.changePassword);
     }
 }

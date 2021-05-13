@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTitle("FHIR_Medication - Login");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 

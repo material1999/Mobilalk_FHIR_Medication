@@ -3,10 +3,16 @@
     <string name="app_name">FHIR_Medication</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="username">Username</string>
+    <string name="email">Email</string>
     <string name="profile">Profile</string>
     <string name="medication">Medication</string>
     <string name="please_grant_location_permission">Please grant location permission!</string>
     <string name="log_out">Log out</string>
     <string name="statistics">Statistics</string>
+    <string name="changePassword">Change password</string>
+    <string name="newPassword">New password</string>
+    <string name="typeHere">Type here...</string>
+    <string name="typeHereAgain">Type here again...</string>
+    <string name="newPasswordAgain">New password again</string>
+    <string name="information">Information</string>
 </resources>

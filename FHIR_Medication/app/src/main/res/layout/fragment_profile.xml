@@ -7,66 +7,87 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100sp"
-        android:layout_marginBottom="100sp"
+        android:layout_marginTop="50sp"
+        android:layout_marginBottom="50sp"
         android:layout_marginLeft="25sp"
         android:layout_marginRight="25sp"
-        android:paddingTop="10sp"
-        android:paddingBottom="10sp"
-        android:paddingLeft="10sp"
-        android:paddingRight="10sp" >
+        android:paddingTop="25sp"
+        android:paddingBottom="25sp" >
 
         <TableRow
-            android:layout_height="match_parent"
-            android:layout_margin="10sp" >
-
+            android:layout_marginBottom="25sp">
             <TextView
-                android:text="header1" />
-
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="@string/information" />
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="25sp"
+            android:layout_marginBottom="25sp" >
             <TextView
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/email" />
+            <TextView
+                android:layout_width="0dp"
+                android:id="@+id/showEmail"
+                android:gravity="center"
+                android:layout_weight="1"
                 android:text="column1" />
-
         </TableRow>
-
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10sp" >
-
+            android:layout_marginTop="50sp"
+            android:layout_marginBottom="50sp">
             <TextView
-                android:text="header2" />
-
-            <TextView
-                android:text="column2" />
-
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textSize="20sp"
+                android:text="@string/changePassword" />
         </TableRow>
-
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:gravity="start"
+                android:layout_weight="1"
+                android:text="@string/newPassword" />
+            <EditText
+                android:layout_width="0dp"
+                android:id="@+id/newPassword"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:hint="@string/typeHere"
+                android:textSize="12sp"
+                android:inputType="textPassword"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:gravity="start"
+                android:layout_weight="1"
+                android:text="@string/newPasswordAgain" />
+            <EditText
+                android:layout_width="0dp"
+                android:id="@+id/newPasswordAgain"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:hint="@string/typeHereAgain"
+                android:textSize="12sp"
+                android:inputType="textPassword"/>
+        </TableRow>
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10sp" >
-
-            <TextView
-                android:text="header3" />
-
-            <TextView
-                android:text="column3" />
-
+            android:layout_marginTop="50sp"
+            android:layout_marginBottom="25sp"
+            android:layout_marginLeft="75sp"
+            android:layout_marginRight="75sp" >
+            <Button
+                android:id="@+id/changePassword"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/changePassword"
+                android:onClick="changePassword"/>
         </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10sp" >
-
-            <TextView
-                android:text="header1" />
-
-            <TextView
-                android:text="column1" />
-
-        </TableRow>
-
     </TableLayout>
-
 </LinearLayout>
