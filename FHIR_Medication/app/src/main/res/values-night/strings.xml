@@ -10,9 +10,11 @@
     <string name="log_out">Log out</string>
     <string name="statistics">Statistics</string>
     <string name="changePassword">Change password</string>
-    <string name="newPassword">New password</string>
-    <string name="typeHere">Type here...</string>
-    <string name="typeHereAgain">Type here again...</string>
-    <string name="newPasswordAgain">New password again</string>
+    <string name="newPassword">New password:</string>
+    <string name="typeOldPassword">Old password here...</string>
+    <string name="typeNewPassword">New password here...</string>
+    <string name="typeNewPasswordAgain">New password here again...</string>
+    <string name="newPasswordAgain">New password again:</string>
     <string name="information">Information</string>
+    <string name="oldPassword">Old password:</string>
 </resources>

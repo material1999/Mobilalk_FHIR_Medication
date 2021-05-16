@@ -12,14 +12,25 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.fhir_medication.fragment.MedicationFragment;
 import com.example.fhir_medication.fragment.ProfileFragment;
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.fragment.StatisticsFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.security.AuthProvider;
+import java.util.Objects;
 
 public class MedicationActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -98,6 +109,47 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
 
     public void changePassword(View view) {
         Log.d(LOG_TAG, "Change password");
-        // TODO: implement password change with passing back information to activity from fragment
+        EditText oldPasswordET = findViewById(R.id.oldPassword);
+        EditText newPasswordET = findViewById(R.id.newPassword);
+        EditText newPasswordAgainET = findViewById(R.id.newPasswordAgain);
+        String oldPassword = oldPasswordET.getText().toString();
+        String newPassword = newPasswordET.getText().toString();
+        String newPasswordAgain = newPasswordAgainET.getText().toString();
+        Log.d(LOG_TAG, user.getEmail());
+        if (oldPassword.isEmpty() || newPassword.isEmpty() || newPasswordAgain.isEmpty()) {
+            oldPasswordET.setText("");
+            newPasswordET.setText("");
+            newPasswordAgainET.setText("");
+            Toast.makeText(MedicationActivity.this,
+                    "Please fill all 3 fields", Toast.LENGTH_LONG).show();
+        } else {
+            AuthCredential credential = EmailAuthProvider
+                    .getCredential(user.getEmail(), oldPassword);
+            user.reauthenticate(credential).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    if (newPassword.equals(newPasswordAgain)) {
+                        oldPasswordET.setText("");
+                        newPasswordET.setText("");
+                        newPasswordAgainET.setText("");
+                        user.updatePassword(newPassword);
+                        Toast.makeText(MedicationActivity.this,
+                                "Password updated successfully", Toast.LENGTH_LONG).show();
+                        Log.d(LOG_TAG, "Password updated: " + oldPassword + " --> " + newPassword);
+                    } else {
+                        oldPasswordET.setText("");
+                        newPasswordET.setText("");
+                        newPasswordAgainET.setText("");
+                        Toast.makeText(MedicationActivity.this,
+                                "New passwords don't match", Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    oldPasswordET.setText("");
+                    newPasswordET.setText("");
+                    newPasswordAgainET.setText("");
+                    Toast.makeText(MedicationActivity.this,
+                            "Incorrect old password", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
     }
 }

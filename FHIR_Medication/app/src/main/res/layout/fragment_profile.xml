@@ -7,8 +7,8 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50sp"
-        android:layout_marginBottom="50sp"
+        android:layout_marginTop="25sp"
+        android:layout_marginBottom="25sp"
         android:layout_marginLeft="25sp"
         android:layout_marginRight="25sp"
         android:paddingTop="25sp"
@@ -49,7 +49,22 @@
         <TableRow>
             <TextView
                 android:layout_width="0dp"
-                android:gravity="start"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="@string/oldPassword" />
+            <EditText
+                android:layout_width="0dp"
+                android:id="@+id/oldPassword"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:hint="@string/typeOldPassword"
+                android:textSize="12sp"
+                android:inputType="textPassword"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="@string/newPassword" />
             <EditText
@@ -57,14 +72,14 @@
                 android:id="@+id/newPassword"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:hint="@string/typeHere"
+                android:hint="@string/typeNewPassword"
                 android:textSize="12sp"
                 android:inputType="textPassword"/>
         </TableRow>
         <TableRow>
             <TextView
                 android:layout_width="0dp"
-                android:gravity="start"
+                android:gravity="center"
                 android:layout_weight="1"
                 android:text="@string/newPasswordAgain" />
             <EditText
@@ -72,13 +87,12 @@
                 android:id="@+id/newPasswordAgain"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:hint="@string/typeHereAgain"
+                android:hint="@string/typeNewPasswordAgain"
                 android:textSize="12sp"
                 android:inputType="textPassword"/>
         </TableRow>
         <TableRow
             android:layout_marginTop="50sp"
-            android:layout_marginBottom="25sp"
             android:layout_marginLeft="75sp"
             android:layout_marginRight="75sp" >
             <Button
