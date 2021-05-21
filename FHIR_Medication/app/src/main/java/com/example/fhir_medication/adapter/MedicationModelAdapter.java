@@ -22,8 +22,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModelAdapter.ViewHolder>
-        implements Filterable {
+public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModelAdapter.ViewHolder> {
 
     private ArrayList<MedicationModel> mMedicationData;
     private ArrayList<MedicationModel> mMedicationDataAll;
@@ -54,39 +53,6 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
     public int getItemCount() {
         return mMedicationData.size();
     }
-
-    @Override
-    public Filter getFilter() {
-        return medicationFilter;
-    }
-
-    private Filter medicationFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            ArrayList<MedicationModel> filteredList = new ArrayList<>();
-            FilterResults results = new FilterResults();
-            if(charSequence == null || charSequence.length() == 0) {
-                results.count = mMedicationDataAll.size();
-                results.values = mMedicationDataAll;
-            } else {
-                String filterPattern = charSequence.toString().toLowerCase().trim();
-                for(MedicationModel item : mMedicationDataAll) {
-                    if(item.getCode().toLowerCase().contains(filterPattern)){
-                        filteredList.add(item);
-                    }
-                }
-                results.count = filteredList.size();
-                results.values = filteredList;
-            }
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            mMedicationData = (ArrayList) filterResults.values;
-            notifyDataSetChanged();
-        }
-    };
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
