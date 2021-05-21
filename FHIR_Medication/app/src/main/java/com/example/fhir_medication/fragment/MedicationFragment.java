@@ -1,6 +1,5 @@
 package com.example.fhir_medication.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.adapter.MedicationModelAdapter;
@@ -216,12 +214,8 @@ public class MedicationFragment extends Fragment {
     public static void deleteItem(MedicationModel item) {
         DocumentReference ref = mItems.document(item._getId());
         ref.delete()
-                .addOnSuccessListener(success -> {
-                    Log.d(LOG_TAG, "Item is successfully deleted: " + item._getId());
-                })
-                .addOnFailureListener(fail -> {
-                    Log.d(LOG_TAG, "Item cannot be deleted: " + item._getId());
-                });
+                .addOnSuccessListener(success -> Log.d(LOG_TAG, "Item is successfully deleted: " + item._getId()))
+                .addOnFailureListener(fail -> Log.d(LOG_TAG, "Item cannot be deleted: " + item._getId()));
         queryData();
     }
 

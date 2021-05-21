@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.activity.MedicationActivity;
-import com.example.fhir_medication.fragment.MedicationFragment;
 import com.example.fhir_medication.model.MedicationModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -25,13 +22,10 @@ import java.util.ArrayList;
 public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModelAdapter.ViewHolder> {
 
     private ArrayList<MedicationModel> mMedicationData;
-    private ArrayList<MedicationModel> mMedicationDataAll;
     private Context mContext;
-    private int lastPosition = -1;
 
     public MedicationModelAdapter(Context context, ArrayList<MedicationModel>itemsData) {
         this.mMedicationData = itemsData;
-        this.mMedicationDataAll = itemsData;
         this.mContext = context;
     }
 
@@ -84,6 +78,6 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
             itemView.findViewById(R.id.delete).setOnClickListener(view ->
                     ((MedicationActivity)mContext).deleteItem(currentItem));
         }
-    };
+    }
 }
 

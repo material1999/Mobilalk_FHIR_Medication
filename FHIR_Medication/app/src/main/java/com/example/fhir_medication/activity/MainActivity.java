@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         notificationHelper = new NotificationHelper(this);
+        // notificationHelper.cancel();
 
         sharedPreferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
         if (sharedPreferences.contains("username") && sharedPreferences.contains("password")) {
@@ -154,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        // notificationHelper.cancel();
         Log.i(LOG_TAG, "onStart");
     }
 

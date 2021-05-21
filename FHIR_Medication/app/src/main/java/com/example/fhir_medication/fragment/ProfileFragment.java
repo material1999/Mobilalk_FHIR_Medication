@@ -41,7 +41,5 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         showEmail = view.findViewById(R.id.showEmail);
         showEmail.setText(requireArguments().getString("email"));
-
-        changePassword = view.findViewById(R.id.changePassword);
     }
 }
