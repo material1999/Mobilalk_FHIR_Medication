@@ -12,7 +12,6 @@
             android:id="@+id/itemImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/itemTitle"
             android:adjustViewBounds="true" />
 
         <TextView
@@ -22,6 +21,7 @@
             android:layout_height="wrap_content"
             android:padding="8sp"
             android:text="title"
+            android:layout_below="@id/itemImage"
             android:textColor="?android:textColorSecondary" />
 
         <TextView
@@ -55,6 +55,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"
+                android:backgroundTint="@android:color/holo_red_dark"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:textSize="12sp"
                 android:text="@string/delete" />
 
             <Button
@@ -62,9 +66,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:textSize="12sp"
                 android:text="@string/edit" />
         </LinearLayout>
-
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

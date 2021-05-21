@@ -36,7 +36,7 @@ public class MedicationFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private ArrayList<MedicationModel> mItemsData;
     private MedicationModelAdapter mAdapter;
-    private int gridNumber = 1;
+    private int gridNumber = 2;
 
     private FirebaseFirestore mFirestore;
     private CollectionReference mItems;
@@ -91,25 +91,71 @@ public class MedicationFragment extends Fragment {
                         new GregorianCalendar(2021, Calendar.JANUARY, 01).getTime()),
                 R.drawable.ic_baseline_person_24);
         mItems.add(item1);
+
         MedicationModel item2 = new MedicationModel(new ArrayList<>(
-                Arrays.asList("medication01", "medication001")), "code01",
-                "status01", "manufacturer01", "form01",
-                10,
+                Arrays.asList("medication02", "medication002")), "code02",
+                "status02", "manufacturer02", "form02",
+                20,
                 new ArrayList<>(Arrays.asList(
-                        new IngredientModel("ingredient01", true, 10),
-                        new IngredientModel("ingredient02", false, 5))),
-                new BatchModel("batch01",
-                        new GregorianCalendar(2021, Calendar.JANUARY, 01).getTime()),
+                        new IngredientModel("ingredient02", true, 20),
+                        new IngredientModel("ingredient03", false, 5))),
+                new BatchModel("batch02",
+                        new GregorianCalendar(2022, Calendar.FEBRUARY, 02).getTime()),
                 R.drawable.ic_baseline_person_24);
         mItems.add(item2);
 
-        Log.d(LOG_TAG, "added");
+        MedicationModel item3 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("medication03", "medication003")), "code03",
+                "status03", "manufacturer03", "form03",
+                30,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("ingredient03", true, 30),
+                        new IngredientModel("ingredient04", false, 5))),
+                new BatchModel("batch03",
+                        new GregorianCalendar(2023, Calendar.MARCH, 03).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item3);
+
+        MedicationModel item4 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("medication04", "medication004")), "code04",
+                "status04", "manufacturer04", "form04",
+                40,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("ingredient04", true, 40),
+                        new IngredientModel("ingredient05", false, 5))),
+                new BatchModel("batch04",
+                        new GregorianCalendar(2024, Calendar.APRIL, 04).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item4);
+
+        MedicationModel item5 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("medication05", "medication005")), "code05",
+                "status05", "manufacturer05", "form05",
+                50,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("ingredient05", true, 50),
+                        new IngredientModel("ingredient06", false, 5))),
+                new BatchModel("batch05",
+                        new GregorianCalendar(2025, Calendar.MAY, 05).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item5);
+
+        MedicationModel item6 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("medication06", "medication006")), "code06",
+                "status06", "manufacturer06", "form06",
+                60,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("ingredient06", true, 60),
+                        new IngredientModel("ingredient07", false, 5))),
+                new BatchModel("batch06",
+                        new GregorianCalendar(2026, Calendar.JUNE, 06).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item6);
     }
 
     private void queryData() {
-        Log.d(LOG_TAG, "in querydata");
         mItemsData.clear();
-        mItems.orderBy("code", Query.Direction.DESCENDING).limit(10).get()
+        mItems.orderBy("code", Query.Direction.ASCENDING).limit(10).get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                         MedicationModel item = document.toObject(MedicationModel.class);
