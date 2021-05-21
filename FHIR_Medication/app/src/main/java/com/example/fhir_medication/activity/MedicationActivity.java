@@ -155,10 +155,10 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
     }
 
     public void editItem(MedicationModel currentItem) {
-        //TODO: edit item method
+        MedicationFragment.editItem(currentItem);
     }
 
     public void deleteItem(MedicationModel currentItem) {
-        //TODO: delete item method
+        MedicationFragment.deleteItem(currentItem);
     }
 }

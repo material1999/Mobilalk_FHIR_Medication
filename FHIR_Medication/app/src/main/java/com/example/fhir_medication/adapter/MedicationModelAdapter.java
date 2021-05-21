@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.activity.MedicationActivity;
+import com.example.fhir_medication.fragment.MedicationFragment;
 import com.example.fhir_medication.model.MedicationModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -116,6 +117,8 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
                     ((MedicationActivity)mContext).editItem(currentItem));
             itemView.findViewById(R.id.delete).setOnClickListener(view ->
                     ((MedicationActivity)mContext).deleteItem(currentItem));
+
+
         }
     };
 }

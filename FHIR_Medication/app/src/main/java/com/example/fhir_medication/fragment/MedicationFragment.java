@@ -1,5 +1,6 @@
 package com.example.fhir_medication.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.adapter.MedicationModelAdapter;
@@ -18,6 +20,7 @@ import com.example.fhir_medication.model.IngredientModel;
 import com.example.fhir_medication.model.MedicationModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -34,12 +37,12 @@ public class MedicationFragment extends Fragment {
     private FloatingActionButton floatingActionButton;
 
     private RecyclerView mRecyclerView;
-    private ArrayList<MedicationModel> mItemsData;
-    private MedicationModelAdapter mAdapter;
+    private static ArrayList<MedicationModel> mItemsData;
+    private static MedicationModelAdapter mAdapter;
     private int gridNumber = 2;
 
     private FirebaseFirestore mFirestore;
-    private CollectionReference mItems;
+    private static CollectionReference mItems;
 
     public MedicationFragment() {
         // Required empty public constructor
@@ -69,7 +72,7 @@ public class MedicationFragment extends Fragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(
                 getContext(), gridNumber));
         mItemsData = new ArrayList<>();
-        mAdapter = new MedicationModelAdapter(this.getContext(), mItemsData);
+        mAdapter = new MedicationModelAdapter(getContext(), mItemsData);
         mRecyclerView.setAdapter(mAdapter);
 
         mFirestore = FirebaseFirestore.getInstance();
@@ -79,7 +82,7 @@ public class MedicationFragment extends Fragment {
         return view;
     }
 
-    private void initializeData() {
+    private static void initializeData() {
         MedicationModel item1 = new MedicationModel(new ArrayList<>(
                 Arrays.asList("medication01", "medication001")), "code01",
                 "status01", "manufacturer01", "form01",
@@ -153,7 +156,7 @@ public class MedicationFragment extends Fragment {
         mItems.add(item6);
     }
 
-    private void queryData() {
+    private static void queryData() {
         mItemsData.clear();
         mItems.orderBy("code", Query.Direction.ASCENDING).limit(10).get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -169,6 +172,23 @@ public class MedicationFragment extends Fragment {
                     }
                     mAdapter.notifyDataSetChanged();
                 });
+    }
+
+    public static void deleteItem(MedicationModel item) {
+        DocumentReference ref = mItems.document(item._getId());
+        ref.delete()
+                .addOnSuccessListener(success -> {
+                    Log.d(LOG_TAG, "Item is successfully deleted: " + item._getId());
+                })
+                .addOnFailureListener(fail -> {
+                    Log.d(LOG_TAG, "Item cannot be deleted: " + item._getId());
+                });
+        queryData();
+    }
+
+    public static void editItem(MedicationModel item) {
+        //TODO: edit item method
+        Log.d(LOG_TAG, "Edit item called: " + item._getId());
     }
 
 }
