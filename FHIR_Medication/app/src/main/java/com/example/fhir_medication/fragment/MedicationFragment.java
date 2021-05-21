@@ -91,7 +91,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Vancomycin Hydrochloride", true, 500))),
                 new BatchModel("9494788",
                         new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_01);
         mItems.add(item1);
 
         MedicationModel item2 = new MedicationModel(new ArrayList<>(
@@ -102,7 +102,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Piperacillin Sodium", null, 400),
                         new IngredientModel("Tazobactam Sodium", null, 500))),
                 new BatchModel(null,null),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_02);
         mItems.add(item2);
 
         MedicationModel item3 = new MedicationModel(new ArrayList<>(
@@ -113,7 +113,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Alemtuzamab (substance)", null, 12))),
                 new BatchModel("9494788",
                         new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_03);
         mItems.add(item3);
 
         MedicationModel item4 = new MedicationModel(new ArrayList<>(
@@ -124,7 +124,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Busulfan (substance)", null, 2))),
                 new BatchModel("9494788",
                         new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_04);
         mItems.add(item4);
 
         MedicationModel item5 = new MedicationModel(new ArrayList<>(
@@ -135,7 +135,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Timolol Maleate (substance)", null, 5))),
                 new BatchModel("9494788",
                         new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_05);
         mItems.add(item5);
 
         MedicationModel item6 = new MedicationModel(new ArrayList<>(
@@ -145,7 +145,7 @@ public class MedicationFragment extends Fragment {
                 new ArrayList<>(Arrays.asList()),
                 new BatchModel("12345",
                         new GregorianCalendar(2019, Calendar.OCTOBER, 31).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_06);
         mItems.add(item6);
 
         MedicationModel item7 = new MedicationModel(new ArrayList<>(
@@ -156,7 +156,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Insulin Aspart (substance)", null, 100))),
                 new BatchModel("12345",
                         new GregorianCalendar(2019, Calendar.OCTOBER, 31).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_07);
         mItems.add(item7);
 
         MedicationModel item8 = new MedicationModel(new ArrayList<>(
@@ -168,7 +168,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Acetaminophen", null, 325))),
                 new BatchModel("658484",
                         new GregorianCalendar(2020, Calendar.JULY, 21).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_08);
         mItems.add(item8);
 
         MedicationModel item9 = new MedicationModel(new ArrayList<>(
@@ -180,7 +180,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Diphenhydramine Hydrochloride 25 mg", null, 25))),
                 new BatchModel("9494788",
                         new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_09);
         mItems.add(item9);
 
         MedicationModel item10 = new MedicationModel(new ArrayList<>(
@@ -191,7 +191,7 @@ public class MedicationFragment extends Fragment {
                         new IngredientModel("Capecitabine (substance)", null, 500))),
                 new BatchModel("9494788",
                         new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
-                R.drawable.ic_baseline_person_24);
+                R.mipmap.ic_10);
         mItems.add(item10);
     }
 
