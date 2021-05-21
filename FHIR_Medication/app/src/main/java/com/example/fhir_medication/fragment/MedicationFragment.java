@@ -2,6 +2,8 @@ package com.example.fhir_medication.fragment;
 
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionInflater;
 
 import android.util.Log;
@@ -10,46 +12,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fhir_medication.R;
+import com.example.fhir_medication.adapter.MedicationModelAdapter;
+import com.example.fhir_medication.model.MedicationModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MedicationFragment#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+import java.util.ArrayList;
+
 public class MedicationFragment extends Fragment {
 
     private static final String LOG_TAG = MedicationFragment.class.getName();
 
     private FloatingActionButton floatingActionButton;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MedicationFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MedicationFragment newInstance(String param1, String param2) {
-        MedicationFragment fragment = new MedicationFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private RecyclerView mRecyclerView;
+    private ArrayList<MedicationModel> mItemsData;
+    private MedicationModelAdapter mAdapter;
+    private int gridNumber = 1;
 
     public MedicationFragment() {
         // Required empty public constructor
@@ -60,10 +38,6 @@ public class MedicationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         TransitionInflater inflater = TransitionInflater.from(requireContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slide_right));
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -78,6 +52,13 @@ public class MedicationFragment extends Fragment {
             // TODO: implement medication add
             Log.d(LOG_TAG, "Adding medication");
         });
+
+        mRecyclerView = view.findViewById(R.id.recyclerView);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(
+                getContext(), gridNumber));
+        mItemsData = new ArrayList<>();
+        mAdapter = new MedicationModelAdapter(getContext(), mItemsData);
+        mRecyclerView.setAdapter(mAdapter);
 
         return view;
     }

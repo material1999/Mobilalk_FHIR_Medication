@@ -29,7 +29,7 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
     private Context mContext;
     private int lastPosition = -1;
 
-    MedicationModelAdapter(Context context, ArrayList<MedicationModel>itemsData) {
+    public MedicationModelAdapter(Context context, ArrayList<MedicationModel>itemsData) {
         this.mMedicationData = itemsData;
         this.mMedicationDataAll = itemsData;
         this.mContext = context;

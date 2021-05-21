@@ -3,6 +3,7 @@ package com.example.fhir_medication.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -35,10 +36,6 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
 
     private static final String LOG_TAG = MedicationActivity.class.getName();
     private FirebaseUser user;
-
-    private RecyclerView mRecyclerView;
-    private ArrayList<MedicationModel> mItemsData;
-    private MedicationModelAdapter mAdapter;
 
     private BottomNavigationView bottomNavigationView;
 
