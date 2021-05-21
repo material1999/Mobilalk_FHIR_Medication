@@ -109,7 +109,8 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
             mSubTitleText.setText(currentItem.getIdentifier().get(0));
             mDetailsText.setText("random info");
 
-            Glide.with(mContext).load(currentItem.getImageResource()).into(mItemImage);
+            Glide.with(mContext).load(currentItem.getImageResource())
+                    .placeholder(R.drawable.ic_baseline_person_24).into(mItemImage);
 
             itemView.findViewById(R.id.edit).setOnClickListener(view ->
                     ((MedicationActivity)mContext).editItem(currentItem));

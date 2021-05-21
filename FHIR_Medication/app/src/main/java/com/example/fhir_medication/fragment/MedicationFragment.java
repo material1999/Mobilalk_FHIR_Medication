@@ -13,10 +13,19 @@ import android.view.ViewGroup;
 
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.adapter.MedicationModelAdapter;
+import com.example.fhir_medication.model.BatchModel;
+import com.example.fhir_medication.model.IngredientModel;
 import com.example.fhir_medication.model.MedicationModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class MedicationFragment extends Fragment {
 
@@ -28,6 +37,9 @@ public class MedicationFragment extends Fragment {
     private ArrayList<MedicationModel> mItemsData;
     private MedicationModelAdapter mAdapter;
     private int gridNumber = 1;
+
+    private FirebaseFirestore mFirestore;
+    private CollectionReference mItems;
 
     public MedicationFragment() {
         // Required empty public constructor
@@ -57,9 +69,60 @@ public class MedicationFragment extends Fragment {
         mRecyclerView.setLayoutManager(new GridLayoutManager(
                 getContext(), gridNumber));
         mItemsData = new ArrayList<>();
-        mAdapter = new MedicationModelAdapter(getContext(), mItemsData);
+        mAdapter = new MedicationModelAdapter(this.getContext(), mItemsData);
         mRecyclerView.setAdapter(mAdapter);
+
+        mFirestore = FirebaseFirestore.getInstance();
+        mItems = mFirestore.collection("Medication");
+        queryData();
 
         return view;
     }
+
+    private void initializeData() {
+        MedicationModel item1 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("medication01", "medication001")), "code01",
+                "status01", "manufacturer01", "form01",
+                10,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("ingredient01", true, 10),
+                        new IngredientModel("ingredient02", false, 5))),
+                new BatchModel("batch01",
+                        new GregorianCalendar(2021, Calendar.JANUARY, 01).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item1);
+        MedicationModel item2 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("medication01", "medication001")), "code01",
+                "status01", "manufacturer01", "form01",
+                10,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("ingredient01", true, 10),
+                        new IngredientModel("ingredient02", false, 5))),
+                new BatchModel("batch01",
+                        new GregorianCalendar(2021, Calendar.JANUARY, 01).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item2);
+
+        Log.d(LOG_TAG, "added");
+    }
+
+    private void queryData() {
+        Log.d(LOG_TAG, "in querydata");
+        mItemsData.clear();
+        mItems.orderBy("code", Query.Direction.DESCENDING).limit(10).get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                        MedicationModel item = document.toObject(MedicationModel.class);
+                        item.setId(document.getId());
+                        mItemsData.add(item);
+                    }
+                    if (mItemsData.size() == 0) {
+                        initializeData();
+                        Log.d(LOG_TAG, "Run initialize");
+                        queryData();
+                    }
+                    mAdapter.notifyDataSetChanged();
+                });
+    }
+
 }

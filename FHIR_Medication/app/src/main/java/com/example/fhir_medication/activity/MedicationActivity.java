@@ -3,8 +3,6 @@ package com.example.fhir_medication.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,19 +15,22 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.fhir_medication.adapter.MedicationModelAdapter;
 import com.example.fhir_medication.fragment.MedicationFragment;
 import com.example.fhir_medication.fragment.ProfileFragment;
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.fragment.StatisticsFragment;
+import com.example.fhir_medication.model.BatchModel;
 import com.example.fhir_medication.model.MedicationModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Objects;
 
 public class MedicationActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {

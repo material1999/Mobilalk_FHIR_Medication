@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class MedicationModel {
 
+    private String id;
     private ArrayList<String> identifier;
     private String code;
     private String status;
@@ -12,11 +13,14 @@ public class MedicationModel {
     private int amount;
     private ArrayList<IngredientModel> ingredient;
     private BatchModel batch;
-    private final int imageResource;
+    private int imageResource;
+
+    public MedicationModel() {}
 
     public MedicationModel(ArrayList<String> identifier, String code, String status,
                            String manufacturer, String form, int amount,
-                           ArrayList<IngredientModel> ingredient, BatchModel batch, int imageResource) {
+                           ArrayList<IngredientModel> ingredient,
+                           BatchModel batch, int imageResource) {
         this.identifier = identifier;
         this.code = code;
         this.status = status;
@@ -96,17 +100,10 @@ public class MedicationModel {
         return imageResource;
     }
 
-    @Override
-    public String toString() {
-        return "MedicationModel{" +
-                "identifier=" + identifier +
-                ", code='" + code + '\'' +
-                ", status='" + status + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", form='" + form + '\'' +
-                ", amount=" + amount +
-                ", ingredient=" + ingredient +
-                ", batch=" + batch +
-                '}';
+    public String _getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
     }
 }

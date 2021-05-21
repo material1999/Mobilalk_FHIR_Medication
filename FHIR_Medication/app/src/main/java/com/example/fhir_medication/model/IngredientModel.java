@@ -6,6 +6,8 @@ public class IngredientModel {
     private boolean isActive;
     private int strength;
 
+    public IngredientModel() {}
+
     public IngredientModel(String item, boolean isActive, int strength) {
         this.item = item;
         this.isActive = isActive;

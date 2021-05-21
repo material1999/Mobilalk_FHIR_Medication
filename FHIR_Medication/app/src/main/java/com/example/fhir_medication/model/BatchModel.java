@@ -7,6 +7,8 @@ public class BatchModel {
     private String lotNumber;
     private Date expirationDate;
 
+    public BatchModel() {}
+
     public BatchModel(String lotNumber, Date expirationDate) {
         this.lotNumber = lotNumber;
         this.expirationDate = expirationDate;
