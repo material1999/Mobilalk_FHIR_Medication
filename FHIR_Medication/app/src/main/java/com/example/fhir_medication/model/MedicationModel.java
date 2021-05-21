@@ -12,10 +12,11 @@ public class MedicationModel {
     private int amount;
     private ArrayList<IngredientModel> ingredient;
     private BatchModel batch;
+    private final int imageResource;
 
     public MedicationModel(ArrayList<String> identifier, String code, String status,
                            String manufacturer, String form, int amount,
-                           ArrayList<IngredientModel> ingredient, BatchModel batch) {
+                           ArrayList<IngredientModel> ingredient, BatchModel batch, int imageResource) {
         this.identifier = identifier;
         this.code = code;
         this.status = status;
@@ -24,6 +25,7 @@ public class MedicationModel {
         this.amount = amount;
         this.ingredient = ingredient;
         this.batch = batch;
+        this.imageResource = imageResource;
     }
 
     public ArrayList<String> getIdentifier() {
@@ -88,6 +90,10 @@ public class MedicationModel {
 
     public void setBatch(BatchModel batch) {
         this.batch = batch;
+    }
+
+    public int getImageResource() {
+        return imageResource;
     }
 
     @Override

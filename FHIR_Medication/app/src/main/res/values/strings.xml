@@ -17,4 +17,6 @@
     <string name="newPasswordAgain">New password again:</string>
     <string name="information">Information</string>
     <string name="oldPassword">Old password:</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
 </resources>

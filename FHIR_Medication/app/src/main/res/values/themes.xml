@@ -14,4 +14,8 @@
         <!-- Customize your theme here. -->
         <item name="android:windowContentTransitions">true</item>
     </style>
+
+    <style name="ItemDetailText" parent="TextAppearance.AppCompat.Subhead"/>
+    <style name="ItemTitle" parent="TextAppearance.AppCompat.Headline"/>
+    <style name="ItemDetailTitle" parent="TextAppearance.AppCompat.Headline"/>
 </resources>

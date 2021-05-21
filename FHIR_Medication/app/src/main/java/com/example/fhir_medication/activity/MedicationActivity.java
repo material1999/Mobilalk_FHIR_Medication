@@ -3,6 +3,7 @@ package com.example.fhir_medication.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -15,27 +16,29 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fhir_medication.adapter.MedicationModelAdapter;
 import com.example.fhir_medication.fragment.MedicationFragment;
 import com.example.fhir_medication.fragment.ProfileFragment;
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.fragment.StatisticsFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.fhir_medication.model.MedicationModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import org.jetbrains.annotations.NotNull;
-
-import java.security.AuthProvider;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MedicationActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     private static final String LOG_TAG = MedicationActivity.class.getName();
     private FirebaseUser user;
+
+    private RecyclerView mRecyclerView;
+    private ArrayList<MedicationModel> mItemsData;
+    private MedicationModelAdapter mAdapter;
 
     private BottomNavigationView bottomNavigationView;
 
@@ -115,7 +118,7 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
         String oldPassword = oldPasswordET.getText().toString();
         String newPassword = newPasswordET.getText().toString();
         String newPasswordAgain = newPasswordAgainET.getText().toString();
-        Log.d(LOG_TAG, user.getEmail());
+        Log.d(LOG_TAG, Objects.requireNonNull(user.getEmail()));
         if (oldPassword.isEmpty() || newPassword.isEmpty() || newPasswordAgain.isEmpty()) {
             oldPasswordET.setText("");
             newPasswordET.setText("");
@@ -151,5 +154,13 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
                 }
             });
         }
+    }
+
+    public void editItem(MedicationModel currentItem) {
+        //TODO: edit item method
+    }
+
+    public void deleteItem(MedicationModel currentItem) {
+        //TODO: delete item method
     }
 }
