@@ -11,7 +11,7 @@ import android.os.Build;
 import androidx.core.app.NotificationCompat;
 
 import com.example.fhir_medication.R;
-import com.example.fhir_medication.activity.MedicationActivity;
+import com.example.fhir_medication.activity.MainActivity;
 
 public class NotificationHelper {
     private static final String CHANNEL_ID = "shop_notification_channel";
@@ -44,7 +44,7 @@ public class NotificationHelper {
     }
 
     public void send(String message) {
-        Intent intent = new Intent(mContext, MedicationActivity.class);
+        Intent intent = new Intent(mContext, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(mContext,
                 NOTIFICATION_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
