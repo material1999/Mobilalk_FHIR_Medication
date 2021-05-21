@@ -10,17 +10,17 @@ public class MedicationModel {
     private String status;
     private String manufacturer;
     private String form;
-    private int amount;
+    private Integer amount;
     private ArrayList<IngredientModel> ingredient;
     private BatchModel batch;
-    private int imageResource;
+    private Integer imageResource;
 
     public MedicationModel() {}
 
     public MedicationModel(ArrayList<String> identifier, String code, String status,
-                           String manufacturer, String form, int amount,
+                           String manufacturer, String form, Integer amount,
                            ArrayList<IngredientModel> ingredient,
-                           BatchModel batch, int imageResource) {
+                           BatchModel batch, Integer imageResource) {
         this.identifier = identifier;
         this.code = code;
         this.status = status;
@@ -72,11 +72,11 @@ public class MedicationModel {
         this.form = form;
     }
 
-    public int getAmount() {
+    public Integer getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(Integer amount) {
         this.amount = amount;
     }
 
@@ -96,8 +96,12 @@ public class MedicationModel {
         this.batch = batch;
     }
 
-    public int getImageResource() {
+    public Integer getImageResource() {
         return imageResource;
+    }
+
+    public void setImageResource(Integer imageResource) {
+        this.imageResource = imageResource;
     }
 
     public String _getId() {

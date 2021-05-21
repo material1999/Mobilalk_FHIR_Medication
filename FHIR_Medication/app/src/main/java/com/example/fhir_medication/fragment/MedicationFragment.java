@@ -84,76 +84,115 @@ public class MedicationFragment extends Fragment {
 
     private static void initializeData() {
         MedicationModel item1 = new MedicationModel(new ArrayList<>(
-                Arrays.asList("medication01", "medication001")), "code01",
-                "status01", "manufacturer01", "form01",
-                10,
+                Arrays.asList("med0301", "medication0301")), "Vancomycin Hydrochloride",
+                "active", "Pfizer Laboratories Div Pfizer Inc", "Injection Solution",
+                null,
                 new ArrayList<>(Arrays.asList(
-                        new IngredientModel("ingredient01", true, 10),
-                        new IngredientModel("ingredient02", false, 5))),
-                new BatchModel("batch01",
-                        new GregorianCalendar(2021, Calendar.JANUARY, 01).getTime()),
+                        new IngredientModel("Vancomycin Hydrochloride", true, 500))),
+                new BatchModel("9494788",
+                        new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
                 R.drawable.ic_baseline_person_24);
         mItems.add(item1);
 
         MedicationModel item2 = new MedicationModel(new ArrayList<>(
-                Arrays.asList("medication02", "medication002")), "code02",
-                "status02", "manufacturer02", "form02",
-                20,
+                Arrays.asList("med0302", "medication0302")), "Zosyn (piperacillin/tazobactam) 4.5gm injection",
+                null, "Wyeth Pharmaceuticals Inc", "Injection solution",
+                null,
                 new ArrayList<>(Arrays.asList(
-                        new IngredientModel("ingredient02", true, 20),
-                        new IngredientModel("ingredient03", false, 5))),
-                new BatchModel("batch02",
-                        new GregorianCalendar(2022, Calendar.FEBRUARY, 02).getTime()),
+                        new IngredientModel("Piperacillin Sodium", null, 400),
+                        new IngredientModel("Tazobactam Sodium", null, 500))),
+                new BatchModel(null,null),
                 R.drawable.ic_baseline_person_24);
         mItems.add(item2);
 
         MedicationModel item3 = new MedicationModel(new ArrayList<>(
-                Arrays.asList("medication03", "medication003")), "code03",
-                "status03", "manufacturer03", "form03",
-                30,
+                Arrays.asList("med0303", "medication0303")), "Alemtuzumab 10mg/ml (Lemtrada)",
+                null, "Genzyme", "Injection solution",
+                null,
                 new ArrayList<>(Arrays.asList(
-                        new IngredientModel("ingredient03", true, 30),
-                        new IngredientModel("ingredient04", false, 5))),
-                new BatchModel("batch03",
-                        new GregorianCalendar(2023, Calendar.MARCH, 03).getTime()),
+                        new IngredientModel("Alemtuzamab (substance)", null, 12))),
+                new BatchModel("9494788",
+                        new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
                 R.drawable.ic_baseline_person_24);
         mItems.add(item3);
 
         MedicationModel item4 = new MedicationModel(new ArrayList<>(
-                Arrays.asList("medication04", "medication004")), "code04",
-                "status04", "manufacturer04", "form04",
-                40,
+                Arrays.asList("med0304", "medication0304")), "Myleran 2mg tablet, film coated",
+                null, "Aspen Global Inc", "Film-coated tablet",
+                null,
                 new ArrayList<>(Arrays.asList(
-                        new IngredientModel("ingredient04", true, 40),
-                        new IngredientModel("ingredient05", false, 5))),
-                new BatchModel("batch04",
-                        new GregorianCalendar(2024, Calendar.APRIL, 04).getTime()),
+                        new IngredientModel("Busulfan (substance)", null, 2))),
+                new BatchModel("9494788",
+                        new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
                 R.drawable.ic_baseline_person_24);
         mItems.add(item4);
 
         MedicationModel item5 = new MedicationModel(new ArrayList<>(
-                Arrays.asList("medication05", "medication005")), "code05",
-                "status05", "manufacturer05", "form05",
-                50,
+                Arrays.asList("med0305", "medication0305")), "Timoptic 5mg/ml solution",
+                null, "Aton Pharma Inc", "Opthalmic Solution",
+                null,
                 new ArrayList<>(Arrays.asList(
-                        new IngredientModel("ingredient05", true, 50),
-                        new IngredientModel("ingredient06", false, 5))),
-                new BatchModel("batch05",
-                        new GregorianCalendar(2025, Calendar.MAY, 05).getTime()),
+                        new IngredientModel("Timolol Maleate (substance)", null, 5))),
+                new BatchModel("9494788",
+                        new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
                 R.drawable.ic_baseline_person_24);
         mItems.add(item5);
 
         MedicationModel item6 = new MedicationModel(new ArrayList<>(
-                Arrays.asList("medication06", "medication006")), "code06",
-                "status06", "manufacturer06", "form06",
-                60,
-                new ArrayList<>(Arrays.asList(
-                        new IngredientModel("ingredient06", true, 60),
-                        new IngredientModel("ingredient07", false, 5))),
-                new BatchModel("batch06",
-                        new GregorianCalendar(2026, Calendar.JUNE, 06).getTime()),
+                Arrays.asList("med0306", "medication0606")), "Adcetris",
+                null, "Seattle Genetics Inc", "Lyophilized powder for injectable solution",
+                null,
+                new ArrayList<>(Arrays.asList()),
+                new BatchModel("12345",
+                        new GregorianCalendar(2019, Calendar.OCTOBER, 31).getTime()),
                 R.drawable.ic_baseline_person_24);
         mItems.add(item6);
+
+        MedicationModel item7 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("med0307", "medication0307")), "Novolog 100u/ml",
+                null, "Novo Nordisk", "Injection Solution",
+                null,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("Insulin Aspart (substance)", null, 100))),
+                new BatchModel("12345",
+                        new GregorianCalendar(2019, Calendar.OCTOBER, 31).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item7);
+
+        MedicationModel item8 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("med0308", "medication0308")), "Percocet tablet",
+                null, "Stat Rx USA LLC", "Tablet dose form",
+                null,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("Oxycodone HCl", null, 5),
+                        new IngredientModel("Acetaminophen", null, 325))),
+                new BatchModel("658484",
+                        new GregorianCalendar(2020, Calendar.JULY, 21).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item8);
+
+        MedicationModel item9 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("med0309", "medication0309")), "Tylenol PM",
+                null, "Johnson and Johnson Consume Inc, McNeil Consumer Healthcare Division",
+                "Film-coated tablet",null,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("Acetaminophen 500 MG", null, 500),
+                        new IngredientModel("Diphenhydramine Hydrochloride 25 mg", null, 25))),
+                new BatchModel("9494788",
+                        new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item9);
+
+        MedicationModel item10 = new MedicationModel(new ArrayList<>(
+                Arrays.asList("med0310", "medication0310")), "Capecitabine 500mg oral tablet (Xeloda)",
+                null, "Gene Inc", "Tablet dose form",
+                null,
+                new ArrayList<>(Arrays.asList(
+                        new IngredientModel("Capecitabine (substance)", null, 500))),
+                new BatchModel("9494788",
+                        new GregorianCalendar(2017, Calendar.MAY, 22).getTime()),
+                R.drawable.ic_baseline_person_24);
+        mItems.add(item10);
     }
 
     private static void queryData() {

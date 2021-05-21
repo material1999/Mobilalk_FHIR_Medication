@@ -107,8 +107,8 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
         public void bindTo(MedicationModel currentItem) {
 
             mTitleText.setText(currentItem.getCode());
-            mSubTitleText.setText(currentItem.getIdentifier().get(0));
-            mDetailsText.setText("random info");
+            mSubTitleText.setText(currentItem.getManufacturer());
+            mDetailsText.setText(currentItem.getForm());
 
             Glide.with(mContext).load(currentItem.getImageResource())
                     .into(mItemImage);
@@ -117,8 +117,6 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
                     ((MedicationActivity)mContext).editItem(currentItem));
             itemView.findViewById(R.id.delete).setOnClickListener(view ->
                     ((MedicationActivity)mContext).deleteItem(currentItem));
-
-
         }
     };
 }

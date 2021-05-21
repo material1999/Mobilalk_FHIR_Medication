@@ -3,12 +3,12 @@ package com.example.fhir_medication.model;
 public class IngredientModel {
 
     private String item;
-    private boolean isActive;
-    private int strength;
+    private Boolean isActive;
+    private Integer strength;
 
     public IngredientModel() {}
 
-    public IngredientModel(String item, boolean isActive, int strength) {
+    public IngredientModel(String item, Boolean isActive, Integer strength) {
         this.item = item;
         this.isActive = isActive;
         this.strength = strength;
@@ -22,19 +22,19 @@ public class IngredientModel {
         this.item = item;
     }
 
-    public boolean isActive() {
+    public Boolean isActive() {
         return isActive;
     }
 
-    public void setActive(boolean active) {
+    public void setActive(Boolean active) {
         isActive = active;
     }
 
-    public int getStrength() {
+    public Integer getStrength() {
         return strength;
     }
 
-    public void setStrength(int strength) {
+    public void setStrength(Integer strength) {
         this.strength = strength;
     }
 
