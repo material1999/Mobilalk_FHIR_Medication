@@ -78,7 +78,6 @@ public class MedicationFragment extends Fragment {
 
         mFirestore = FirebaseFirestore.getInstance();
         mItems = mFirestore.collection("Medication");
-        queryData();
 
         return view;
     }
@@ -198,7 +197,7 @@ public class MedicationFragment extends Fragment {
 
     private static void queryData() {
         mItemsData.clear();
-        mItems.orderBy("code", Query.Direction.ASCENDING).limit(10).get()
+        mItems.orderBy("code", Query.Direction.ASCENDING).limit(20).get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                         MedicationModel item = document.toObject(MedicationModel.class);
@@ -228,10 +227,8 @@ public class MedicationFragment extends Fragment {
     }
 
     public void addItem() {
-        // TODO: implement medication add
         Log.d(LOG_TAG, "Adding medication");
         addActivityStart();
-
     }
 
     private void addActivityStart() {
@@ -244,4 +241,9 @@ public class MedicationFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        queryData();
+    }
 }
