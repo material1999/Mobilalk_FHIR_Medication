@@ -19,4 +19,23 @@
     <string name="oldPassword">Old password:</string>
     <string name="delete">Delete</string>
     <string name="edit">Edit</string>
+    <string name="identifier1">Identifier 1</string>
+    <string name="identifier2">Identifier 2</string>
+    <string name="code">Code</string>
+    <string name="status">Status</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="form">Form</string>
+    <string name="amount">Amount</string>
+    <string name="batch1_lotNumber">Batch 1 - Lot Number</string>
+    <string name="batch1_expirationDate">Batch 1 - Expiration Date</string>
+    <string name="batch2_lotNumber">Batch 2 - Lot Number</string>
+    <string name="batch2_expirationDate">Batch 2 - Expiration Date</string>
+    <string name="back">Back</string>
+    <string name="add">Add</string>
+    <string name="ingredient1_item">Ingredient 1 - Item</string>
+    <string name="ingredient1_isActive">Ingredient 1 - Is Active</string>
+    <string name="ingredient1_strength">Ingredient 1 - Strength</string>
+    <string name="ingredient2_item">Ingredient 2 - Item</string>
+    <string name="ingredient2_isActive">Ingredient 2 - Is Active</string>
+    <string name="ingredient2_strength">Ingredient 2 - Strength</string>
 </resources>

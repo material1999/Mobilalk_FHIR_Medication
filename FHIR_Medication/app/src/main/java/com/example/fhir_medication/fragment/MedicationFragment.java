@@ -1,5 +1,8 @@
 package com.example.fhir_medication.fragment;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -12,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.fhir_medication.R;
+import com.example.fhir_medication.activity.AddMedicationActivity;
 import com.example.fhir_medication.adapter.MedicationModelAdapter;
 import com.example.fhir_medication.model.BatchModel;
 import com.example.fhir_medication.model.IngredientModel;
@@ -219,13 +223,25 @@ public class MedicationFragment extends Fragment {
     }
 
     public static void editItem(MedicationModel item) {
-        //TODO: edit item method
+        // TODO: implement medication edit
         Log.d(LOG_TAG, "Edit item called: " + item._getId());
     }
 
     public void addItem() {
         // TODO: implement medication add
         Log.d(LOG_TAG, "Adding medication");
+        addActivityStart();
+
+    }
+
+    private void addActivityStart() {
+        Intent intent = new Intent(getContext(), AddMedicationActivity.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(getActivity()).toBundle());
+        } else {
+            startActivity(intent);
+        }
     }
 
 }

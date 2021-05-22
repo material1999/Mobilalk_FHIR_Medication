@@ -99,7 +99,7 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
                     String message = "";
                     try {
                         JSONObject jsonObj = new JSONObject(json);
-                        message = jsonObj.toString(8);
+                        message = jsonObj.toString(4);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

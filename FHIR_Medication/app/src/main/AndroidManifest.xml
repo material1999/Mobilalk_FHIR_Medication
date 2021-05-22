@@ -5,17 +5,19 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:icon="@mipmap/ic_medication"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_medication_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FHIR_Medication">
+        android:theme="@style/Theme.FHIR_Medication"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".activity.AddMedicationActivity"></activity>
         <activity android:name=".activity.MedicationActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
