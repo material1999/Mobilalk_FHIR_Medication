@@ -62,8 +62,7 @@ public class MedicationFragment extends Fragment {
 
         floatingActionButton = view.findViewById(R.id.addMedicationButton);
         floatingActionButton.setOnClickListener(v -> {
-            // TODO: implement medication add
-            Log.d(LOG_TAG, "Adding medication");
+            addItem();
         });
 
         mRecyclerView = view.findViewById(R.id.recyclerView);
@@ -222,6 +221,11 @@ public class MedicationFragment extends Fragment {
     public static void editItem(MedicationModel item) {
         //TODO: edit item method
         Log.d(LOG_TAG, "Edit item called: " + item._getId());
+    }
+
+    public void addItem() {
+        // TODO: implement medication add
+        Log.d(LOG_TAG, "Adding medication");
     }
 
 }

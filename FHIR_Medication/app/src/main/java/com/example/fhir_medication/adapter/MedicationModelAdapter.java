@@ -90,14 +90,9 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("clicked: " + currentItem.getCode());
+                    System.out.println("Clicked item card: " + currentItem.getCode());
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
-                    alertDialogBuilder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            System.out.println("close clicked");
-                        }
-                    });
+                    alertDialogBuilder.setNegativeButton("Close", null);
                     AlertDialog alert = alertDialogBuilder.create();
                     alert.setTitle("Details - " + currentItem.getCode());
                     String json = currentItem.toString();
