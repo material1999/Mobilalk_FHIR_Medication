@@ -99,15 +99,24 @@
                 android:gravity="start|top"
                 android:inputType="text" />
 
-            <EditText
+            <RadioGroup
                 android:id="@+id/ingredient1_isActive"
-                android:hint="@string/ingredient1_isActive"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="date" />
+                android:layout_height="match_parent"
+                android:orientation='horizontal'>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/active" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/not_active" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/null_" />
+            </RadioGroup>
 
             <EditText
                 android:id="@+id/ingredient1_strength"
@@ -129,15 +138,24 @@
                 android:gravity="start|top"
                 android:inputType="text" />
 
-            <EditText
+            <RadioGroup
                 android:id="@+id/ingredient2_isActive"
-                android:hint="@string/ingredient2_isActive"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="date" />
+                android:layout_height="match_parent"
+                android:orientation='horizontal'>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/active" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/not_active" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/null_" />
+            </RadioGroup>
 
             <EditText
                 android:id="@+id/ingredient2_strength"

@@ -38,4 +38,7 @@
     <string name="ingredient2_item">Ingredient 2 - Item</string>
     <string name="ingredient2_isActive">Ingredient 2 - Is Active</string>
     <string name="ingredient2_strength">Ingredient 2 - Strength</string>
+    <string name="active">Active</string>
+    <string name="not_active">Not Active</string>
+    <string name="null_">Null</string>
 </resources>
