@@ -40,7 +40,7 @@ public class IngredientModel {
 
     @Override
     public String toString() {
-        return "IngredientModel{" +
+        return "{" +
                 "item='" + item + '\'' +
                 ", isActive=" + isActive +
                 ", strength=" + strength +

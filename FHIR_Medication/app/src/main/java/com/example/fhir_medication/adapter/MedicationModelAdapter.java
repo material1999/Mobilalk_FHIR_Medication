@@ -1,6 +1,10 @@
 package com.example.fhir_medication.adapter;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.util.JsonReader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +18,14 @@ import com.bumptech.glide.Glide;
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.activity.MedicationActivity;
 import com.example.fhir_medication.model.MedicationModel;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -77,6 +87,33 @@ public class MedicationModelAdapter extends RecyclerView.Adapter<MedicationModel
                     ((MedicationActivity)mContext).editItem(currentItem));
             itemView.findViewById(R.id.delete).setOnClickListener(view ->
                     ((MedicationActivity)mContext).deleteItem(currentItem));
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    System.out.println("clicked: " + currentItem.getCode());
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(mContext);
+                    alertDialogBuilder.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            System.out.println("close clicked");
+                        }
+                    });
+                    AlertDialog alert = alertDialogBuilder.create();
+                    alert.setTitle("Details - " + currentItem.getCode());
+                    String json = currentItem.toString();
+                    String message = "";
+                    try {
+                        JSONObject jsonObj = new JSONObject(json);
+                        message = jsonObj.toString(8);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    message = message.replace("\"", "");
+                    message = message.replace(",", "");
+                    alert.setMessage(message);
+                    alert.show();
+                }
+            });
         }
     }
 }

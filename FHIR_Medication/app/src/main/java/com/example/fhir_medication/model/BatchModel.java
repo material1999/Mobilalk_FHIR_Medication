@@ -32,9 +32,9 @@ public class BatchModel {
 
     @Override
     public String toString() {
-        return "BatchModel{" +
+        return "{" +
                 "lotNumber='" + lotNumber + '\'' +
-                ", expirationDate=" + expirationDate +
+                ", expirationDate='" + expirationDate + '\'' +
                 '}';
     }
 }

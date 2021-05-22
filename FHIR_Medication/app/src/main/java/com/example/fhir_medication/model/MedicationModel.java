@@ -111,4 +111,20 @@ public class MedicationModel {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "id='" + id + '\'' +
+                ", identifier=" + identifier +
+                ", code='" + code + '\'' +
+                ", status='" + status + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", form='" + form + '\'' +
+                ", amount=" + amount +
+                ", ingredient=" + ingredient +
+                ", batch=" + batch +
+                ", imageResource=" + imageResource +
+                '}';
+    }
 }
