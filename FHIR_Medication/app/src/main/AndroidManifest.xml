@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FHIR_Medication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.AddMedicationActivity"></activity>
+        <activity android:name=".activity.EditMedicationActivity"></activity>
+        <activity android:name=".activity.AddMedicationActivity" />
         <activity android:name=".activity.MedicationActivity" />
         <activity android:name=".activity.MainActivity">
             <intent-filter>

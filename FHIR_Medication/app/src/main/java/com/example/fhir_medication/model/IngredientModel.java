@@ -1,6 +1,8 @@
 package com.example.fhir_medication.model;
 
-public class IngredientModel {
+import java.io.Serializable;
+
+public class IngredientModel implements Serializable {
 
     private String item;
     private Boolean isActive;

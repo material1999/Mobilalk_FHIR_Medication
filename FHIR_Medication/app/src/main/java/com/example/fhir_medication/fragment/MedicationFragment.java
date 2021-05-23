@@ -1,6 +1,7 @@
 package com.example.fhir_medication.fragment;
 
 import android.app.ActivityOptions;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,13 +10,17 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionInflater;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.fhir_medication.R;
 import com.example.fhir_medication.activity.AddMedicationActivity;
+import com.example.fhir_medication.activity.EditMedicationActivity;
+import com.example.fhir_medication.activity.MedicationActivity;
 import com.example.fhir_medication.adapter.MedicationModelAdapter;
 import com.example.fhir_medication.model.BatchModel;
 import com.example.fhir_medication.model.IngredientModel;
@@ -46,6 +51,8 @@ public class MedicationFragment extends Fragment {
     private FirebaseFirestore mFirestore;
     private static CollectionReference mItems;
 
+    private static Context mContext;
+
     public MedicationFragment() {
         // Required empty public constructor
     }
@@ -55,6 +62,7 @@ public class MedicationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         TransitionInflater inflater = TransitionInflater.from(requireContext());
         setEnterTransition(inflater.inflateTransition(R.transition.slide_right));
+        mContext = getContext();
     }
 
     @Override
@@ -216,19 +224,33 @@ public class MedicationFragment extends Fragment {
     public static void deleteItem(MedicationModel item) {
         DocumentReference ref = mItems.document(item._getId());
         ref.delete()
-                .addOnSuccessListener(success -> Log.d(LOG_TAG, "Item is successfully deleted: " + item._getId()))
-                .addOnFailureListener(fail -> Log.d(LOG_TAG, "Item cannot be deleted: " + item._getId()));
+                .addOnSuccessListener(success -> {
+                    Log.d(LOG_TAG, "Item is successfully deleted: " + item._getId());
+                    Toast.makeText(mContext,
+                            "Item deleted successfully!", Toast.LENGTH_LONG).show();
+                })
+                .addOnFailureListener(fail -> {
+                    Log.d(LOG_TAG, "Item cannot be deleted: " + item._getId());
+                    Toast.makeText(mContext,
+                            "Item cannot be deleted!", Toast.LENGTH_LONG).show();
+                });
         queryData();
     }
 
     public static void editItem(MedicationModel item) {
-        // TODO: implement medication edit
         Log.d(LOG_TAG, "Edit item called: " + item._getId());
+        editActivityStart(item);
     }
 
     public void addItem() {
         Log.d(LOG_TAG, "Adding medication");
         addActivityStart();
+    }
+
+    private static void editActivityStart(MedicationModel item) {
+        Intent intent = new Intent(mContext, EditMedicationActivity.class);
+        intent.putExtra("item", item);
+        mContext.startActivity(intent);
     }
 
     private void addActivityStart() {

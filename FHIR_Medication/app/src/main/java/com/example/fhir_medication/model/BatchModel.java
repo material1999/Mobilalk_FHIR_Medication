@@ -1,8 +1,9 @@
 package com.example.fhir_medication.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BatchModel {
+public class BatchModel implements Serializable {
 
     private String lotNumber;
     private Date expirationDate;
