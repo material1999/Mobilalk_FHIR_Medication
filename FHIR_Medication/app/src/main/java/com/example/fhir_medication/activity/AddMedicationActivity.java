@@ -116,7 +116,7 @@ public class AddMedicationActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            Integer imageResource = null;
+            Integer imageResource = R.mipmap.ic_medication;
 
             MedicationModel item = new MedicationModel(new ArrayList<>(
                     Arrays.asList(identifier1, identifier2)), code, status, manufacturer, form, amount,
