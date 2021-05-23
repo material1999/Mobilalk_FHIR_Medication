@@ -205,7 +205,7 @@ public class MedicationFragment extends Fragment {
 
     private static void queryData() {
         mItemsData.clear();
-        mItems.orderBy("code", Query.Direction.ASCENDING).limit(20).get()
+        mItems.orderBy("code", Query.Direction.ASCENDING).limit(10).get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
                         MedicationModel item = document.toObject(MedicationModel.class);
