@@ -4,6 +4,210 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.EditMedicationActivity">
+    tools:context=".activity.AddMedicationActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/identifier1"
+                android:hint="@string/identifier1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/identifier2"
+                android:hint="@string/identifier2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/code"
+                android:hint="@string/code"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/status"
+                android:hint="@string/status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/manufacturer"
+                android:hint="@string/manufacturer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/form"
+                android:hint="@string/form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/amount"
+                android:hint="@string/amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="numberDecimal" />
+
+            <EditText
+                android:id="@+id/ingredient1_item"
+                android:hint="@string/ingredient1_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <RadioGroup
+                android:id="@+id/ingredient1_isActive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation='horizontal'>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/active" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/not_active" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/null_" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/ingredient1_strength"
+                android:hint="@string/ingredient1_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/ingredient2_item"
+                android:hint="@string/ingredient2_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <RadioGroup
+                android:id="@+id/ingredient2_isActive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation='horizontal'>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/active" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/not_active" />
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/null_" />
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/ingredient2_strength"
+                android:hint="@string/ingredient2_strength"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/batch_lotNumber"
+                android:hint="@string/batch_lotNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/batch_expirationDate"
+                android:hint="@string/batch_expirationDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="date" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25sp"
+                    android:text="@string/back" />
+
+                <Button
+                    android:id="@+id/editButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="25sp"
+                    android:text="@string/edit" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
