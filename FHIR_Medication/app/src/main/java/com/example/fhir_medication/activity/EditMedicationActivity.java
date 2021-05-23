@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -75,7 +76,91 @@ public class EditMedicationActivity extends AppCompatActivity {
         batchLotNumber_IN = findViewById(R.id.batch_lotNumber);
         batchExpirationDate_IN = findViewById(R.id.batch_expirationDate);
 
-
+        try {
+            identifier1_IN.setText(editItem.getIdentifier().get(0));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            identifier2_IN.setText(editItem.getIdentifier().get(1));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            code_IN.setText(editItem.getCode());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            status_IN.setText(editItem.getStatus());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            manufacturer_IN.setText(editItem.getManufacturer());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            form_IN.setText(editItem.getForm());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            amount_IN.setText(editItem.getAmount().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ingredient1Item_IN.setText(editItem.getIngredient().get(0).getItem());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ((RadioButton)ingredient1IsActive_IN.getChildAt(2)).setChecked(true);
+            if (editItem.getIngredient().get(0).isActive()) {
+                ((RadioButton)ingredient1IsActive_IN.getChildAt(0)).setChecked(true);
+            } else if (!editItem.getIngredient().get(0).isActive()) {
+                ((RadioButton)ingredient1IsActive_IN.getChildAt(1)).setChecked(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ingredient1Strength_IN.setText(editItem.getIngredient().get(0).getStrength());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ingredient2Item_IN.setText(editItem.getIngredient().get(0).getItem());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ((RadioButton)ingredient2IsActive_IN.getChildAt(2)).setChecked(true);
+            if (editItem.getIngredient().get(0).isActive()) {
+                ((RadioButton)ingredient2IsActive_IN.getChildAt(0)).setChecked(true);
+            } else if (!editItem.getIngredient().get(0).isActive()) {
+                ((RadioButton)ingredient2IsActive_IN.getChildAt(1)).setChecked(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            ingredient2Strength_IN.setText(editItem.getIngredient().get(0).getStrength());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            batchLotNumber_IN.setText(editItem.getBatch().getLotNumber());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            batchExpirationDate_IN.setText(editItem.getBatch().getExpirationDate().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         backButton.setOnClickListener(v -> finish());
 
