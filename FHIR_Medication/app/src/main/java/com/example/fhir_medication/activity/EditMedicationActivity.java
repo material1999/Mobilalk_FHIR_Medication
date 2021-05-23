@@ -138,9 +138,9 @@ public class EditMedicationActivity extends AppCompatActivity {
         }
         try {
             ((RadioButton)ingredient2IsActive_IN.getChildAt(2)).setChecked(true);
-            if (editItem.getIngredient().get(0).isActive()) {
+            if (editItem.getIngredient().get(1).isActive()) {
                 ((RadioButton)ingredient2IsActive_IN.getChildAt(0)).setChecked(true);
-            } else if (!editItem.getIngredient().get(0).isActive()) {
+            } else if (!editItem.getIngredient().get(1).isActive()) {
                 ((RadioButton)ingredient2IsActive_IN.getChildAt(1)).setChecked(true);
             }
         } catch (Exception e) {
@@ -157,7 +157,9 @@ public class EditMedicationActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         try {
-            batchExpirationDate_IN.setText(editItem.getBatch().getExpirationDate().toString());
+            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            String format = formatter.format(editItem.getBatch().getExpirationDate());
+            batchExpirationDate_IN.setText(format);
         } catch (Exception e) {
             e.printStackTrace();
         }
