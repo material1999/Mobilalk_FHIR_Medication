@@ -71,9 +71,7 @@ public class AddMedicationActivity extends AppCompatActivity {
         batchLotNumber_IN = findViewById(R.id.batch_lotNumber);
         batchExpirationDate_IN = findViewById(R.id.batch_expirationDate);
 
-        backButton.setOnClickListener(v -> {
-            finish();
-        });
+        backButton.setOnClickListener(v -> finish());
 
         addButton.setOnClickListener(v -> {
             String identifier1 = identifier1_IN.getText().toString();
@@ -94,7 +92,7 @@ public class AddMedicationActivity extends AppCompatActivity {
             }
             Integer ingredient1Strength = null;
             if (!ingredient1Strength_IN.getText().toString().equals("")) {
-                Integer.parseInt(ingredient1Strength_IN.getText().toString());
+                ingredient1Strength = Integer.parseInt(ingredient1Strength_IN.getText().toString());
             }
             String ingredient2Item = ingredient2Item_IN.getText().toString();
             Boolean ingredient2IsActive = null;
@@ -104,7 +102,7 @@ public class AddMedicationActivity extends AppCompatActivity {
             }
             Integer ingredient2Strength = null;
             if (!ingredient2Strength_IN.getText().toString().equals("")) {
-                Integer.parseInt(ingredient2Strength_IN.getText().toString());
+                ingredient2Strength = Integer.parseInt(ingredient2Strength_IN.getText().toString());
             }
             String batchLotNumber = batchLotNumber_IN.getText().toString();
             Date batchExpirationDate = null;
@@ -127,7 +125,7 @@ public class AddMedicationActivity extends AppCompatActivity {
 
             mItems.add(item);
             Toast.makeText(AddMedicationActivity.this,
-                    "Item added successfully", Toast.LENGTH_LONG).show();
+                    "Item added successfully!", Toast.LENGTH_LONG).show();
             finish();
         });
     }
