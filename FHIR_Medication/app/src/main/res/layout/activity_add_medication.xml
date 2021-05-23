@@ -168,8 +168,8 @@
                 android:inputType="date" />
 
             <EditText
-                android:id="@+id/batch1_lotNumber"
-                android:hint="@string/batch1_lotNumber"
+                android:id="@+id/batch_lotNumber"
+                android:hint="@string/batch_lotNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"
@@ -178,28 +178,8 @@
                 android:inputType="text" />
 
             <EditText
-                android:id="@+id/batch1_expirationDate"
-                android:hint="@string/batch1_expirationDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="date" />
-
-            <EditText
-                android:id="@+id/batch2_lotNumber"
-                android:hint="@string/batch2_lotNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5sp"
-                android:ems="10"
-                android:gravity="start|top"
-                android:inputType="text" />
-
-            <EditText
-                android:id="@+id/batch2_expirationDate"
-                android:hint="@string/batch2_expirationDate"
+                android:id="@+id/batch_expirationDate"
+                android:hint="@string/batch_expirationDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5sp"

@@ -26,10 +26,8 @@
     <string name="manufacturer">Manufacturer</string>
     <string name="form">Form</string>
     <string name="amount">Amount</string>
-    <string name="batch1_lotNumber">Batch 1 - Lot Number</string>
-    <string name="batch1_expirationDate">Batch 1 - Expiration Date</string>
-    <string name="batch2_lotNumber">Batch 2 - Lot Number</string>
-    <string name="batch2_expirationDate">Batch 2 - Expiration Date</string>
+    <string name="batch_lotNumber">Batch - Lot Number</string>
+    <string name="batch_expirationDate">Batch - Expiration Date (dd/mm/yyyy)</string>
     <string name="back">Back</string>
     <string name="add">Add</string>
     <string name="ingredient1_item">Ingredient 1 - Item</string>
