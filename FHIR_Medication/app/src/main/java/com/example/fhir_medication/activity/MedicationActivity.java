@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.example.fhir_medication.fragment.MedicationFragment;
 import com.example.fhir_medication.fragment.ProfileFragment;
 import com.example.fhir_medication.R;
-import com.example.fhir_medication.fragment.StatisticsFragment;
+import com.example.fhir_medication.fragment.VaccinesFragment;
 import com.example.fhir_medication.model.MedicationModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.AuthCredential;
@@ -76,11 +76,11 @@ public class MedicationActivity extends AppCompatActivity implements BottomNavig
                 selectedFragment.setArguments(bundle);
                 Log.d(LOG_TAG, "Medication");
                 break;
-            case R.id.statistics:
-                setTitle("FHIR_Medication - Statistics");
-                selectedFragment = new StatisticsFragment();
+            case R.id.vaccines:
+                setTitle("FHIR_Medication - Vaccines");
+                selectedFragment = new VaccinesFragment();
                 selectedFragment.setArguments(bundle);
-                Log.d(LOG_TAG, "Statistics");
+                Log.d(LOG_TAG, "Vaccines");
                 break;
             case R.id.profilePage:
                 setTitle("FHIR_Medication - Profile");

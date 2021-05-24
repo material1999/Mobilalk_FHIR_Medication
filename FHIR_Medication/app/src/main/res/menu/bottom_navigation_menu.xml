@@ -6,10 +6,10 @@
             android:icon="@drawable/ic_baseline_local_hospital_24"
             android:title="@string/medication"/>
         <item
-            android:id="@+id/statistics"
+            android:id="@+id/vaccines"
             android:enabled="true"
-            android:icon="@drawable/ic_baseline_bar_chart_24"
-            android:title="@string/statistics"/>
+            android:icon="@drawable/ic_baseline_security_24"
+            android:title="@string/vaccines"/>
         <item
             android:id="@+id/profilePage"
             android:enabled="true"

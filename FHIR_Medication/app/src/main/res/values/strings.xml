@@ -8,7 +8,7 @@
     <string name="medication">Medication</string>
     <string name="please_grant_location_permission">Please grant location permission!</string>
     <string name="log_out">Log out</string>
-    <string name="statistics">Statistics</string>
+    <string name="vaccines">Vaccines</string>
     <string name="changePassword">Change password</string>
     <string name="newPassword">New password:</string>
     <string name="typeOldPassword">Old password here...</string>
